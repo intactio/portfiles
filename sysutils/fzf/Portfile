@@ -22,6 +22,37 @@ depends_build       port:go
 use_configure       no
 dist_subdir         go
 
-checksums           md5 c610ee1dfac4bb6b912d3f97f9e8d2e9 \
-                    sha1 5120d74a72979adf951d8aabeac4473281d2da3b \
-                    sha256 dcd6b9f61b00262a00ad368ecc1ec797283c2c9261d3588799b86142b9b623a8
+checksums           fzf-${version}.tar.gz \
+                        md5     c610ee1dfac4bb6b912d3f97f9e8d2e9 \
+                        sha1    5120d74a72979adf951d8aabeac4473281d2da3b \
+                        sha256  dcd6b9f61b00262a00ad368ecc1ec797283c2c9261d3588799b86142b9b623a8
+
+# dependencies to build. remember revbump when you change version of dependencies.
+set go-runewidth.version    63c378b851290989b19ca955468386485f118c65
+set go-shellwords.version   35d512af75e283aae4ca1fc3d44b159ed66189a4
+# dependencies
+master_sites-append https://github.com/junegunn/go-runewidth/tarball/${go-runewidth.version}:go-runewidth \
+                    https://github.com/junegunn/go-shellwords/tarball/${go-shellwords.version}:go-shellwords
+distfiles-append    junegunn-go-runewidth-${go-runewidth.version}.tar.gz:go-runewidth \
+                    junegunn-go-shellwords-${go-shellwords.version}.tar.gz:go-shellwords
+checksums-append    junegunn-go-runewidth-${go-runewidth.version}.tar.gz \
+                        md5     77a5a798f5c3fe09f8cb7d12e218e560 \
+                        sha1    51ec9fa4ea78bd5396911983c5823cbdf8a43682 \
+                        sha256  3fe70d2ca6d4cbfd22613bed09c5abc8f374f5c38f148e4f3729612f0da3f87a \
+                    junegunn-go-shellwords-${go-shellwords.version}.tar.gz \
+                        md5     c5bbe751a0bb3a129c982af11fee54bb \
+                        sha1    b1b09307f20dd1dd4ef34db12eb2c0a7b85447a2 \
+                        sha256  1ed25ce85eeb8fe378450f94125d0c9ea21ad6ac2202e2ac544ba2779ee07f36
+
+set gopath          ${workpath}/GOPATH
+post-extract {
+    file mkdir ${gopath}/src/github.com/junegunn/fzf
+    ln -s ${worksrcpath}/src ${gopath}/src/github.com/junegunn/fzf/src
+    move [glob ${workpath}/junegunn-go-runewidth-*] ${gopath}/src/github.com/junegunn/go-runewidth
+    move [glob ${workpath}/junegunn-go-shellwords-*] ${gopath}/src/github.com/junegunn/go-shellwords
+}
+
+build.cmd           go
+build.target        build
+build.args          -a -ldflags -w -tags \"\" -o bin/fzf src/fzf/main.go
+build.env           GOPATH="${gopath}"
