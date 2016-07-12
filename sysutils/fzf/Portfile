@@ -1,27 +1,27 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 # $Id$
 
-PortSystem      1.0
-PortGroup       github 1.0
+PortSystem          1.0
+PortGroup           github 1.0
 
-github.setup    junegunn fzf 0.13.2 v
-revision        0
-categories      sysutils
-homepage        https://github.com/junegunn/fzf
-description     command-line fuzzy finder
-long_description \
-        fzf is a general-purpose command-line fuzzy finder.
-license         MIT
+version             0.13.2
+github.setup        junegunn fzf ${version}
 
-maintainers     openmaintainer
-platforms       darwin
+categories          sysutils
+platforms           darwin
+license             MIT
 
-depends_build   port:go
-use_configure   no
-dist_subdir     go
+maintainers         gmail.com:intact79 \
+                    openmaintainer
+description         command-line fuzzy finder
+long_description    fzf is a general-purpose command-line fuzzy finder.
 
-# fzf
-checksums       fzf-${version}.tar.gz \
-                    md5 a67e9e9d8d9b6fb67bbb540754c380c3 \
-                    sha1 90e9340b4279c3b97a35385bc123af600d9c7d99\
-                    sha256 063c2e0e23944acead08e90a33ebce0d5d1c05b168571f56800b3b2ddf7c5ee9
+homepage            https://github.com/junegunn/fzf
+
+depends_build       port:go
+use_configure       no
+dist_subdir         go
+
+checksums           md5 c610ee1dfac4bb6b912d3f97f9e8d2e9 \
+                    sha1 5120d74a72979adf951d8aabeac4473281d2da3b \
+                    sha256 dcd6b9f61b00262a00ad368ecc1ec797283c2c9261d3588799b86142b9b623a8
