@@ -56,3 +56,24 @@ build.cmd           go
 build.target        build
 build.args          -a -ldflags -w -tags \"\" -o bin/fzf src/fzf/main.go
 build.env           GOPATH="${gopath}"
+
+destroot {
+    # Install fzf, fzf-tmux
+    xinstall ${worksrcpath}/bin/fzf ${destroot}${prefix}/bin
+    xinstall ${worksrcpath}/bin/fzf-tmux ${destroot}${prefix}/bin
+
+    # Man pages
+    xinstall -d ${destroot}${prefix}/share/man/man1
+    xinstall -m 644 {*}[glob ${worksrcpath}/man/man1/*.1] \
+        ${destroot}${prefix}/share/man/man1
+
+    # Install shell completion and key-bindings
+    xinstall -d ${destroot}${prefix}/share/${name}/shell
+    xinstall -m 644 {*}[glob ${worksrcpath}/shell/*] \
+        ${destroot}${prefix}/share/${name}/shell
+
+    # Install vim plugin
+    xinstall -d ${destroot}${prefix}/share/${name}/plugin
+    xinstall -m 644 {*}[glob ${worksrcpath}/plugin/*] \
+        ${destroot}${prefix}/share/${name}/plugin
+}
