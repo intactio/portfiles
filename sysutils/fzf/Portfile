@@ -4,7 +4,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-version             0.13.4
+version             0.13.5
 github.setup        junegunn fzf ${version}
 
 categories          sysutils
@@ -23,9 +23,9 @@ use_configure       no
 dist_subdir         go
 
 checksums           fzf-${version}.tar.gz \
-                        md5     18a3bb21ffc8c659b7ca67cab2f7d12c \
-                        sha1    7ac430e002480f15539a24b7275517eb50203c83 \
-                        sha256  e4125308e334e5bbf2ccf83f06581faede5830adf72087c3f3c8f1de21484b31
+                        md5     12476799201018260b435790741d9cd1 \
+                        sha1    b26f7daae69ab40ee73fd06dda901e198a8e0fb2 \
+                        sha256  2739454ca9a35a4e9eeadb356c16f2a57b25cd473caa9f85e7442a934e94e7c7
 
 # dependencies to build. remember revbump when you change version of dependencies.
 set go-runewidth.version    63c378b851290989b19ca955468386485f118c65
