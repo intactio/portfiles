@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-version             0.17.4
+version             0.17.5
 github.setup        junegunn fzf ${version}
 
 categories          sysutils
@@ -22,9 +22,9 @@ use_configure       no
 dist_subdir         go
 
 checksums           fzf-${version}.tar.gz \
-                        md5     2df4b0a9372ed9b8bd2efb2c49a03626 \
-                        sha1    ca32e310b275f2c1d1ef682d61910a573de292cb \
-                        sha256  7a90ce935fb3c30612144f1af71366258474d0eb23e8e88291df31a5b6a036d8
+                        md5     a5d11b1d18bae8f23b5736d68321a887 \
+                        sha1    1752bdab2da32f3ac6b00cfb8f6b533046384dc5 \
+                        sha256  3b420dc394dba800b74e93d1b0d0e12c579e209fabb183528254013c3823890d
 
 build.cmd           make
 build.target        bin/fzf
