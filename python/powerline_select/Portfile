@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           select 1.0
+
+name                powerline_select
+version             0.1
+categories          python devel
+platforms           darwin
+license             MIT
+supported_archs     noarch
+
+maintainers         gmail.com:intact79 \
+                    openmaintainer
+description         Common files for selecting the default Powerline version
+long_description    This port installs files that allow 'port select' to \
+                    create links to the preferred default version of Powerline.
+
+homepage            https://www.macports.org/
+
+distfiles
+use_configure       no
+build               {}
+
+destroot {
+    select::install powerline ${filespath}/base
+    select::install powerline ${filespath}/none
+}
+
+livecheck.type      none

@@ -1,0 +1,5 @@
+bin/powerline
+bin/powerline-config
+bin/powerline-daemon
+bin/powerline-lint
+bin/powerline-render
